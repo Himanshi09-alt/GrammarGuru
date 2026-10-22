@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrammarGuru — English Grammar Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="logo" aria-label="GrammarGuru">Grammar<span>Guru</span></p>
+  </header>
+
+  <main>
+    <!-- Screen 1: Welcome -->
+    <section id="screen-welcome" class="card" aria-labelledby="welcome-title">
+      <h1 id="welcome-title" tabindex="-1">Improve Your English, One Question at a Time.</h1>
+      <p>Read two versions of a sentence and choose the one with correct grammar. After every answer you get a short explanation of the rule.</p>
+      <p id="welcome-best" class="best" hidden></p>
+
+      <div class="field">
+        <label for="topic-select">Topic</label>
+        <select id="topic-select"></select>
+      </div>
+      <div class="field">
+        <label for="age-input">Your age (optional)</label>
+        <input id="age-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Type your age (e.g. 18)" aria-describedby="age-help level-suggestion">
+        <p id="age-help" class="field-help">Type your age using numbers. We only use it to suggest a starting level; you can choose any level yourself.</p>
+      </div>
+      <div class="field">
+        <label for="difficulty-select">Choose your difficulty</label>
+        <select id="difficulty-select">
+          <option value="all">Any level</option>
+          <option value="beginner">Beginner — easy grammar</option>
+          <option value="intermediate">Intermediate — build confidence</option>
+          <option value="advanced">Advanced — trickier grammar</option>
+        </select>
+        <p id="level-suggestion" class="field-help" aria-live="polite">Choose any level or enter your age for a suggested starting point.</p>
+      </div>
+      <p id="start-error" class="error" role="alert" hidden></p>
+      <button id="start-btn" class="btn primary" type="button">Start Game</button>
+
+      <h2>How to Play</h2>
+      <ol class="steps">
+        <li>Choose sentence A or B.</li>
+        <li>Press Check Answer to see if you were right.</li>
+        <li>Read the explanation, then move to the next question.</li>
+      </ol>
+    </section>
+
+    <!-- Screen 2: Game -->
+    <section id="screen-game" class="card" aria-labelledby="game-title" hidden>
+      <div class="status-row">
+        <p id="question-count" class="status"></p>
+        <p id="score" class="status"></p>
+      </div>
+      <progress id="progress" value="0" max="10"></progress>
+      <p id="category" class="category"></p>
+      <h2 id="game-title" tabindex="-1">Which sentence is grammatically correct?</h2>
+
+      <div class="options">
+        <button type="button" class="option" id="option-0" aria-pressed="false">
+          <span class="option-letter">A</span><span class="option-text"></span><span class="option-status"></span>
+        </button>
+        <button type="button" class="option" id="option-1" aria-pressed="false">
+          <span class="option-letter">B</span><span class="option-text"></span><span class="option-status"></span>
+        </button>
+      </div>
+
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+
+      <div class="actions">
+        <button id="check-btn" class="btn primary" type="button" disabled>Check Answer</button>
+        <button id="next-btn" class="btn primary" type="button" hidden>Next Question</button>
+        <button id="restart-btn" class="btn" type="button">Restart Game</button>
+      </div>
+    </section>
+
+    <!-- Screen 3: Results -->
+    <section id="screen-results" class="card" aria-labelledby="results-title" hidden>
+      <h2 id="results-title" tabindex="-1">Your Results</h2>
+      <p id="results-score" class="big-score"></p>
+      <p id="results-percent"></p>
+      <p id="results-counts"></p>
+      <p id="results-message" class="message"></p>
+      <p id="results-best" class="best" hidden></p>
+      <div class="actions">
+        <button id="play-again-btn" class="btn primary" type="button">Play Again</button>
+        <button id="review-btn" class="btn" type="button">Review Mistakes</button>
+        <button id="home-btn" class="btn" type="button">Back to Home</button>
+      </div>
+    </section>
+
+    <!-- Screen 4: Review Mistakes -->
+    <section id="screen-mistakes" class="card" aria-labelledby="mistakes-title" hidden>
+      <h2 id="mistakes-title" tabindex="-1">Review Mistakes</h2>
+      <div id="mistakes-list"></div>
+      <div class="actions">
+        <button id="back-results-btn" class="btn primary" type="button">Back to Results</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
